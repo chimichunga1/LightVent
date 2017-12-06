@@ -24,12 +24,22 @@
     <?php
     if(isset($_GET['x']))
     {
-    
-
+      
+      for ($i=0; $i < $x ; $i++) 
+      { 
+       
+      
+          if(($_GET['x']) == $sidebar_label[$i])
+          {
+          $y="LV_".$sidebar_label[$i].".php";
+          include($y);
+          }
+      }
     }
     else
     {
-    
+      
+
     }
     ?>
 
