@@ -2,9 +2,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SLAMBOOK | DASHBOARD</title>
-    <link rel="icon" type="image/png" href="asset/favicon-16x16.png" sizes="16x16">
-    <link rel="icon" type="image/png" href="asset/favicon-32x32.png" sizes="32x32">
+  <title>LIGHTVENT | DASHBOARD</title>
+
+
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
