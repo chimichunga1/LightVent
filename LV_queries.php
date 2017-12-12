@@ -14,7 +14,7 @@ function getSupplier()
   $xQx .= "email,";
   $xQx .= "typeOfSup ";
   $xQx .= "FROM suppliers ";
-  $xQx .= "WHERE isDeleted = 0 AND NOT supId = 0  ";
+  $xQx .= "WHERE isDeleted = 0 AND NOT supId = 0 ";
   $query=mysqli_query($conn,$xQx);
   return  $query;
 }   
@@ -69,7 +69,7 @@ function getEdit_Supplier($a)
   $xQx .= "date_approved, ";
   $xQx .= "supId ";
   $xQx .= "FROM suppliers ";
-  $xQx .= "WHERE supId='$a'  ";
+  $xQx .= "WHERE supId='$a' ";
   $query=mysqli_query($conn,$xQx);
   return  $query;
 
@@ -115,5 +115,110 @@ function getSup_BusType($a)
   return  $query;
 }
 
+//-------------------------------- Client
+
+function getClient()
+{
+  global $conn;
+  $xQx = "SELECT clientId,";
+  $xQx .=  "clientName,";
+  $xQx .=  "contactPerson,";
+  $xQx .=  "telno,";
+  $xQx .=  "mobileno,";
+  $xQx .=  "faxno,";
+  $xQx .=  "email ";
+  $xQx .=  "FROM clients ";
+  $xQx .=  "WHERE isDeleted = 0 ";
+  $query=mysqli_query($conn,$xQx);
+  return  $query;
+}
+
+function delClient($a)
+{
+  global $conn;
+  $xQx = "UPDATE clients ";
+  $xQx .=  "SET isDeleted = 1 ";
+  $xQx .=  "WHERE clientId='$a'";
+  $query=mysqli_query($conn,$xQx);
+  return  $query;
+}
+
+function addClient($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m,$n,$o)
+{
+  global $conn;
+  $xQx = "INSERT INTO clients(";
+  $xQx .= "clientName, ";
+  $xQx .= "busTypeId, ";
+  $xQx .= "contactPerson, ";
+  $xQx .= "address, ";
+  $xQx .= "telno, ";
+  $xQx .= "faxno, ";
+  $xQx .= "mobileno, ";
+  $xQx .= "email, ";
+  $xQx .= "dateCreated, ";
+  $xQx .= "remarks, ";
+  $xQx .= "tin, ";
+  $xQx .= "osca_pwd_no, ";
+  $xQx .= "sc_tin_no, ";
+  $xQx .= "tax_status, ";
+  $xQx .= "isActive) ";
+  $xQx .= " VALUES('$a','$b','$c','$d','$e','$f','$g','$h','$i','$j','$k','$l','$m','$n','$o') ";
+  $query=mysqli_query($conn,$xQx);
+  return  $query;
+}
+
+
+
+function updClient($a,$b,$c,$d,$e,$f,$g,$h,$j,$k,$l,$m,$n,$o,$p)
+{
+  global $conn;
+  $xQx = "UPDATE clients SET ";
+  $xQx .= "clientName='$a', ";
+  $xQx .= "busTypeId='$b', ";
+  $xQx .= "contactPerson='$c', ";
+  $xQx .= "address='$d', ";
+  $xQx .= "telno='$e', ";
+  $xQx .= "faxno='$f', ";
+  $xQx .= "mobileno='$g', ";
+  $xQx .= "email='$h', ";
+/*   $xQx .= "dateCreated='$i', "; */
+  $xQx .= "remarks='$j', ";
+  $xQx .= "tin='$k', ";
+  $xQx .= "osca_pwd_no='$l', ";
+  $xQx .= "sc_tin_no='$m', ";
+  $xQx .= "tax_status='$n', ";
+  $xQx .= "isActive='$o' ";
+  $xQx .= "WHERE clientId ='$p'";
+  $query=mysqli_query($conn,$xQx);
+  return  $query;
+}
+
+function getEdit_Clients($a)
+{
+  global $conn;
+  $xQx = "SELECT clientId,";
+  $xQx .= "clientName,";
+  $xQx .= "busTypeId,";
+  $xQx .= "contactPerson,";
+  $xQx .= "address,";
+  $xQx .= "telno,";
+  $xQx .= "faxno,";
+  $xQx .= "mobileno,";
+  $xQx .= "email,";
+  $xQx .= "dateCreated,";
+  $xQx .= "remarks,";
+  $xQx .= "tin,";
+  $xQx .= "osca_pwd_no,";
+  $xQx .= "sc_tin_no,";
+  $xQx .= "tax_status,";
+  $xQx .= "isActive ";
+  $xQx .= "FROM clients  ";
+  $xQx .= "WHERE clientId = '$a'";
+  $query=mysqli_query($conn,$xQx);
+
+
+  return  $query;
+
+}
 
 ?>

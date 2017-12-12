@@ -168,8 +168,8 @@ function frm_edit_supplier()
 <div class="divider"></div>
   <form  role="form" action="LV_submit.php" method="post"   enctype="multipart/form-data" >
     <?php 
-     global  $editsupid;
-    $xQx=getEdit_Supplier($editsupid);
+   
+    $xQx=getEdit_Supplier($_SESSION['editsupid']);
     while($row=mysqli_fetch_array($xQx))
     {
         echo "<input type='text' class='form-control' id='SupId' name='supId'  style='position:absolute;z-index:-1;opacity:0;' value='".$row[12]."'>";
@@ -365,6 +365,443 @@ function frm_edit_supplier()
     <?php 
     }
 
+}
+
+
+
+function frm_edit_client()
+{
+  ?>
+  <div class="divider"></div>
+  <form  role="form" action="LV_submit.php" method="post"   enctype="multipart/form-data" >
+
+     <?php 
+ 
+    $xQx=getEdit_Clients($_SESSION['editclientid']);
+    while($row=mysqli_fetch_array($xQx))
+    {
+        echo "<input type='text' class='form-control' id='clientId' name='clientId'  style='position:absolute;z-index:-1;opacity:0;' value='".$row[0]."'>";
+    ?>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px" >Company</button>
+                  </div>
+                
+                  <?php echo " <input type='text' class='form-control'  name='Client_a'  value='".$row[1]."'>"; ?>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Contact Person</button>
+                  </div>
+              
+
+                  <?php echo " <input type='text' class='form-control'  name='Client_c'  value='".$row[3]."'>"; ?>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Business Type</button>
+                  </div>
+                
+              <select name="Client_b"  class="form-control" required>
+               
+                 <?php 
+                      
+                          $xQx=getSup_BusType($row[2]);
+                          $rowx=mysqli_fetch_array($xQx);
+                           echo "<option value='". $rowx[0]."' Selected>SELECTED -> ". $rowx[1]."</option>";
+
+                    
+                          $xQx=getallSup_BusType();
+
+                          while($rowx=mysqli_fetch_array($xQx))
+
+                          {
+                            echo "
+                            <option value='".$rowx[0]."' >".$rowx[1]."</option>
+                            ";
+                          }
+                    ?>
+                 
+              
+              </select>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+  
+    <div class="col-md-4">
+      <div class="input-group margin">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-block btn-primary btn-flat size-125px">TIN</button>
+            </div>
+  
+            <?php echo " <input type='text' class='form-control'  name='Client_k'  value='".$row[11]."'>"; ?>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="input-group margin">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-block btn-primary btn-flat size-125px">SC TIN</button>
+            </div>
+           
+            <?php echo " <input type='text' class='form-control'  name='Client_m'  value='".$row[13]."'>"; ?>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="input-group margin">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-block btn-primary btn-flat size-125px">OSCA/PWD/ID No.</button>
+            </div>
+           
+            <?php echo " <input type='text' class='form-control'  name='Client_l'  value='".$row[12]."'>"; ?>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Address</button>
+                  </div>
+                  <?php echo " <input type='text' class='form-control'  name='Client_d'  value='".$row[4]."'>"; ?>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Telephone No.</button>
+                  </div>
+                  <?php echo " <input type='text' class='form-control'  name='Client_e'  value='".$row[5]."'>"; ?>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Mobile No.</button>
+                  </div>
+                  <?php echo " <input type='text' class='form-control'  name='Client_g'  value='".$row[7]."'>"; ?>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Fax No.</button>
+                  </div>
+                  <?php echo " <input type='text' class='form-control'  name='Client_f'  value='".$row[6]."'>"; ?>
+      </div>
+    </div>
+
+  </div>
+
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Email</button>
+                  </div>
+                  <?php echo " <input type='email' class='form-control'  name='Client_h'  value='".$row[8]."'>"; ?>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Date Created</button>
+                  </div>
+               
+                  <?php echo " <input type='date' class='form-control'  name='Client_i' style='cursor:default;' disabled value='".$row[9]."'>"; ?>
+                
+
+              
+      </div>
+    </div>
+  </div>
+    
+
+  <div class="row">
+    <div class="col-md-12">
+    <center>
+              <button type="button" class="btn btn-block btn-primary btn-flat" style="width:98%; ">Remarks</button>
+          
+              <?php echo " <textarea  style='width:98%; resize: none;' rows='5' class='form-control'  name='Client_j'  >".$row[10]."</textarea>"; ?>        
+             
+    </center>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">TAX Status</button>
+                  </div>
+              <select name="Client_n"  class="form-control"  required>
+                <?php echo " <option value='".$row[14]."' Selected>SELECTED -> ".$row[14]."</option>"; ?> 
+                <option value=" "> </option>
+                <option value="Vatable">Vatable</option>
+                <option value="Non Vatable">Non Vatable</option>
+         
+              </select>
+                  
+      </div>
+    </div>
+    <div class="col-md-3">
+    <div style="margin:10px;">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">isActive</button>
+    </div>
+    </div>
+    <div class="col-md-3">
+    <div class="input-group margin">
+      <center>
+                  <label class="switch">
+                
+                    <?php 
+                    if($row[15]=='1')
+                    {
+                        echo '<input type="checkbox" checked name="Client_o" value="1" >';
+                    }
+                    else
+                    {
+                        echo '<input type="checkbox" name="Client_o" value="1" >';
+                    }
+                    ?>
+                    <span class="slider"></span>
+                  </label>
+                 
+      </center>
+    </div>
+    </div>
+  </div>
+                
+
+  <button type="submit" class="btn  btn-success btn-flat"  style="float:right;" name="editClient">Submit</button>
+  </form>  
+
+  <br>
+  <br>
+  <div class="divider"></div>
+
+  <?php 
+    }
+}
+
+
+function frm_add_client()
+{
+?>
+<div class="divider"></div>
+  <form  role="form" action="LV_submit.php" method="post"   enctype="multipart/form-data" >
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px" >Company</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Client_a"  required>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Contact Person</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Client_c"  required>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Business Type</button>
+                  </div>
+                
+              <select name="Client_b"  class="form-control" required>
+                 <option value=" " Selected> </option>
+                 <?php $xQx=getallSup_BusType();
+                 
+                      while($row=mysqli_fetch_array($xQx))
+
+                      {
+                        echo "
+                        <option value='".$row[0]."' >".$row[1]."</option>
+                        ";
+                      }
+                 ?>
+              
+              </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input-group margin">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-block btn-primary btn-flat size-125px">TIN</button>
+            </div>
+            <input type="text" class="form-control"  name="Client_k"  >
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="input-group margin">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-block btn-primary btn-flat size-125px">SC TIN</button>
+            </div>
+            <input type="text" class="form-control"  name="Client_m"  >
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="input-group margin">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-block btn-primary btn-flat size-125px">OSCA/PWD/ID No.</button>
+            </div>
+            <input type="text" class="form-control"  name="Client_l"  >
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Address</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Client_d"  >
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Telephone No.</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Client_e"  required>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Mobile No.</button>
+                  </div>
+                  <input type="email" class="form-control"  name="Client_g"  >
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Fax No.</button>
+                  </div>
+                  <input type="email" class="form-control"  name="Client_f"  >
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Email</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Client_h" >
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Date Created</button>
+                  </div>
+                  <input type="date" class="form-control"  name="Client_i" value="<?php echo date("Y-m-d");?>" >
+                
+
+              
+      </div>
+    </div>
+  </div>
+    
+
+  <div class="row">
+    <div class="col-md-12">
+    <center>
+              <button type="button" class="btn btn-block btn-primary btn-flat" style="width:98%; ">Remarks</button>
+              <textarea  style="width:98%; resize: none;" rows="5" class="form-control"  name="Client_j"  ></textarea>
+    </center>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">TAX Status</button>
+                  </div>
+              <select name="Client_n"  class="form-control"  required>
+                <option value=" " Selected> </option>
+                <option value="Vatable">Vatable</option>
+                <option value="Non Vatable">Non Vatable</option>
+         
+              </select>
+                  
+      </div>
+    </div>
+    <div class="col-md-3">
+    <div style="margin:10px;">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">isActive</button>
+    </div>
+    </div>
+    <div class="col-md-3">
+    <div class="input-group margin">
+      <center>
+                  <label class="switch">
+                    <input type="checkbox" name="Client_o" value="1"  >
+                    <span class="slider"></span>
+                  </label>
+                 
+      </center>
+    </div>
+    </div>
+  </div>
+
+
+  <button type="submit" class="btn  btn-success btn-flat"  style="float:right;" name="addClient">Submit</button>
+  </form>  
+
+  <br>
+  <br>
+  <div class="divider"></div>
+<?php 
 }
 
 ?>
