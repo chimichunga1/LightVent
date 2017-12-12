@@ -33,9 +33,17 @@ function frm_add_supplier()
                 
               <select name="Supplier_b"  class="form-control" required>
                  <option value=" " Selected> </option>
-                <option value="1" >1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>    
+                 <?php $xQx=getallSup_BusType();
+                 
+                      while($row=mysqli_fetch_array($xQx))
+
+                      {
+                        echo "
+                        <option value='".$row[0]."' >".$row[1]."</option>
+                        ";
+                      }
+                 ?>
+              
               </select>
       </div>
     </div>
@@ -197,10 +205,29 @@ function frm_edit_supplier()
                     </div>
                     
                 <select name="Supplier_j"  class="form-control" >
-                    <?php echo "<option value='". $row[9]."' Selected>SELECTED -> ". $row[9]."</option>"; ?>
-                    <option value="1">1</option>
+                    <?php 
+                      
+                          $xQx=getSup_BusType($row[9]);
+                          $rowx=mysqli_fetch_array($xQx);
+                           echo "<option value='". $rowx[0]."' Selected>SELECTED -> ". $rowx[1]."</option>";
+
+                    
+                          $xQx=getallSup_BusType();
+
+                          while($rowx=mysqli_fetch_array($xQx))
+
+                          {
+                            echo "
+                            <option value='".$rowx[0]."' >".$rowx[1]."</option>
+                            ";
+                          }
+                    ?>
+
+
+                    <?php /* echo "<option value='". $row[9]."' Selected>SELECTED -> ". $row[9]."</option>"; */ ?>
+                    <!-- <option value="1">1</option>
                     <option value="2">2</option>    
-                    <option value="3">3</option>    
+                    <option value="3">3</option>     -->
                 </select>
         </div>
         </div>

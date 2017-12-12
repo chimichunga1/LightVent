@@ -96,4 +96,24 @@ function updSupplier($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m)
 }
 
 
+function getallSup_BusType()
+{
+  global $conn;
+  $xQx = "SELECT busTypeId,busTypeName ";
+  $xQx .=  "FROM businesstypes WHERE NOT busTypeId = 0 ";
+  $query=mysqli_query($conn,$xQx);
+  return  $query;
+}
+
+function getSup_BusType($a)
+{
+  global $conn;
+  $xQx = "SELECT busTypeId,busTypeName ";
+  $xQx .=  "FROM businesstypes  ";
+  $xQx .=  "WHERE busTypeId = '$a' ";
+  $query=mysqli_query($conn,$xQx);
+  return  $query;
+}
+
+
 ?>
