@@ -2,7 +2,8 @@
 function tbl_supplier()
 {
   ?>
-  <table id="ManageSupplier" class="display" cellspacing="0" width="100%">
+<!--   <table id="ManageSupplier" class="display" cellspacing="0" width="100%"> -->
+  <table id="ManageSupplier" class="ui celled table" cellspacing="0" width="100%">
           <thead>
               <tr>
                   <th>Suppliers Name</th>
@@ -162,7 +163,8 @@ function tbl_supplier()
 function tbl_client()
 {
   ?>
-  <table id="ManageClients" class="display" cellspacing="0" width="100%">
+<!--   <table id="ManageClients" class="display" cellspacing="0" width="100%"> -->
+  <table id="ManageClients" class="ui celled table" cellspacing="0" width="100%">
           <thead>
               <tr>
                   <th>Company Name</th>
