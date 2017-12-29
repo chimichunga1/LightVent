@@ -3,6 +3,15 @@
 <div><p>MANAGE SUPPLIERS</p></div>
 
 <style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        margin: 0 auto;
+    }
+ 
+    div.container {
+        width: 80%;
+    }
+
   .switch {
   position: relative;
   display: inline-block;
@@ -11,6 +20,7 @@
   background-color:#3c8dbc;
   border-color:#367fa9;
   
+
 }
 
 /* Hide default HTML checkbox */
@@ -82,6 +92,9 @@ input::-webkit-inner-spin-button {
 <script>
 $(document).ready(function(){
     $('#ManageSupplier').DataTable({
+        
+      
+
       "aoColumns": [
           null,
           null,
