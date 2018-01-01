@@ -1,18 +1,18 @@
 <?php 
 
-$h1='localhost';
-$u1='root';
-$p1='ondevilla';
-$d1="lightvent";
-$conn=mysqli_connect($h1, $u1, $p1, $d1) or die (mysqli_error());
-global $conn;
+//$h1='localhost';
+//$u1='root';
+//$p1='ondevilla';
+//$d1="lightvent";
+//$conn=mysqli_connect($h1, $u1, $p1, $d1) or die (mysqli_error());
+//global $conn;
    
 $h2='localhost';
 $u2='root';
 $p2='cortez';
 $d2="lightvent";
-$conn2=mysqli_connect($h2, $u2, $p2, $d2) or die (mysqli_error());
-global $conn2;
+$conn=mysqli_connect($h2, $u2, $p2, $d2) or die (mysqli_error());
+global $conn;
    
 
 ?>

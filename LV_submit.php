@@ -110,5 +110,68 @@ if (isset($_POST['editClient']))
 
 
 
+if (isset($_POST['addGroups']))
+{
+//-----------------------------------------------
+    if(empty($_POST['groupa']))
+    {
+    
+    }
+    else
+    {
+  
+         echo $_POST['groupa'];
+         addgroup($_POST['groupa'],'0');   
+
+    }
+//-----------------------------------------------
+    ?>
+    <script>   
+    window.location.href="admin.php?x=GROUP";
+    </script>
+<?php
+}
+
+
+
+
+if (isset($_POST['addstocks']))
+{
+//-----------------------------------------------
+    if(empty($_POST['stock_m']))
+    {
+    
+    }
+    else
+    {
+  
+         addstocks($_POST['stock_a'],$_POST['stock_b'],$_POST['stock_c'],$_POST['stock_d'],$_POST['stock_e'],$_POST['stock_f'],$_POST['stock_g'],$_POST['stock_h'],$_POST['stock_i'],$_POST['stock_j'],$_POST['stock_k'],$_POST['stock_l'],$_POST['stock_m'],$_POST['stock_n'],'0');   
+
+    }
+//-----------------------------------------------
+    ?>
+  <script>   
+    window.location.href="admin.php?x=STOCKS";
+    </script> 
+<?php
+}
+
+
+
+
+if (isset($_POST['delStock']))
+{
+//-----------------------------------------------
+delStock($_POST['stockId']);
+//-----------------------------------------------
+    ?>
+    <script>   
+    window.location.href="admin.php?x=STOCKS";
+    </script>
+<?php 
+
+}
+
+
 
 ?>

@@ -19,6 +19,53 @@ function getSupplier()
   return  $query;
 }   
 
+function getStocks()
+{
+  global $conn;
+  $xQx = "SELECT assetsId,";
+  $xQx .= "code,";
+  $xQx .= "assetName,";
+  $xQx .= "statId,";
+  $xQx .= "unitPrice,";
+  $xQx .= "sellPrice,";
+  $xQx .= "supId, ";
+  $xQx .= "brand, ";
+  $xQx .= "model, ";
+  $xQx .= "description,";
+  $xQx .= "unitPrice, ";
+  $xQx .= "sellPrice, ";
+  $xQx .= "date_purchased, ";
+  $xQx .= "endofWarranty_date, ";
+  $xQx .= "delivery_date ";
+  $xQx .= "FROM assetstwo ";
+  $xQx .= "WHERE isDeleted = 0";
+  $query=mysqli_query($conn,$xQx);
+  return  $query;
+}   
+
+function getsupname($supId)
+{
+  global $conn;
+  $xQx = "SELECT supName";
+  $xQx .= "FROM suppliers ";
+  $xQx .= "WHERE supId='$supId'";
+  $query=mysqli_query($conn,$xQx);
+  return  $query;
+}  
+
+function getGroup()
+{
+  global $conn;
+  $xQx = "SELECT groupid, ";
+  $xQx .= "groupName ";
+  $xQx .= "FROM groups ";
+  $xQx .= "WHERE isDeleted = 0";
+  $query=mysqli_query($conn,$xQx);
+  return  $query;
+}   
+
+
+
 
 function addSupplier($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l)
 {
@@ -41,6 +88,64 @@ function addSupplier($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l)
     $query=mysqli_query($conn,$xQx);
     return  $query;
 }
+
+function addstocks($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m,$n,$o)
+{
+    global $conn;
+    $xQx = "INSERT INTO assetstwo(";
+    $xQx .= "code,";
+    $xQx .= "serialName,";
+    $xQx .= "supId,";
+    $xQx .= "itmTypeId,";
+    $xQx .= "assetName,";
+    $xQx .= "brand,";
+    $xQx .= "model,";
+    $xQx .= "description,";
+    $xQx .= "unitPrice,";
+    $xQx .= "sellPrice,";
+    $xQx .= "date_purchased,";
+    $xQx .= "endofWarranty_date,";
+    $xQx .= "delivery_date,";
+    $xQx .= "remarks,";
+    $xQx .= "isDeleted)";
+    $xQx .=" VALUES (";
+    $xQx .=" '$a','$b','$c','$d','$e','$f','$g','$h','$i','$j','$k','$l','$m','$n','$o')";
+    $query=mysqli_query($conn,$xQx);
+    return  $query;
+}
+function addgroup($a,$b)
+{
+    global $conn;
+    $xQx = "INSERT INTO groups(";
+    $xQx .= "groupName,";
+    $xQx .= "isDeleted) ";
+    $xQx .=" VALUES (";
+    $xQx .=" '$a','$b') ";
+    $query=mysqli_query($conn,$xQx);
+    return  $query;
+}
+
+
+
+
+
+
+
+
+
+function delStock($a)
+{
+  global $conn;
+  $xQx = "UPDATE assetstwo ";
+  $xQx .= "SET isDeleted = 1 ";
+  $xQx .=  "WHERE assetsId='$a' ";
+  $query=mysqli_query($conn,$xQx);
+  return  $query;
+}
+
+
+
+
 
 function delSupplier($a)
 {

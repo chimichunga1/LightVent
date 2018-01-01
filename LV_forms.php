@@ -805,3 +805,807 @@ function frm_add_client()
 }
 
 ?>
+
+
+
+
+<?php 
+
+
+function frm_add_stocks()
+{
+?>
+<div class="divider"></div>
+  <form  role="form" action="LV_submit.php" method="post"   enctype="multipart/form-data" >
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px" >Tag/Code</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Supplier_a"  required>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">S/N</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Supplier_c"  required>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Supplier</button>
+                  </div>
+                
+              <select name="Supplier_b"  class="form-control" required>
+                 <option value=" " Selected> </option>
+                 <?php $xQx=getSupplier();
+                 
+                      while($row=mysqli_fetch_array($xQx))
+
+                      {
+                        echo "
+                        <option value='".$row[0]."' >".$row[1]."</option>
+                        ";
+                      }
+                 ?>
+              
+              </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Item Group</button>
+                  </div>
+                
+              <select name="Supplier_b"  class="form-control" required>
+                 <option value=" " Selected> </option>
+                 <?php $xQx=getSupplier();
+                 
+                      while($row=mysqli_fetch_array($xQx))
+
+                      {
+                        echo "
+                        <option value='".$row[0]."' >".$row[1]."</option>
+                        ";
+                      }
+                 ?>
+              
+              </select>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Item</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Supplier_e"  required>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Brand</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Supplier_f"  required>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Model</button>
+                  </div>
+                  <input type="email" class="form-control"  name="Supplier_g"  required>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Description</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Supplier_h" >
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Unit Price</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Supplier_i" >
+
+              
+      </div>
+    </div>
+  </div>
+    
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Date of Purchase</button>
+                  </div>
+                  <input type="date" class="form-control"  name="Supplier_j"  >
+
+              
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">End of Warranty</button>
+                  </div>
+                  <input type="date" class="form-control"  name="Supplier_k"  >
+
+              
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Delivery Date</button>
+                  </div>
+                  <input type="date" class="form-control"  name="Supplier_l"  >
+
+              
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+    <center>
+              <button type="button" class="btn btn-block btn-primary btn-flat" style="width:98%; ">Remarks</button>
+              <textarea  style="width:98%; resize: none;" rows="5" class="form-control"  name="Supplier_j"  ></textarea>
+    </center>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+         <!--<div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Suppliers Type</button>
+                  </div>
+              <select name="Supplier_k"  class="form-control"  required>
+                <option value=" " Selected> </option>
+                <option value="Potential">Potential</option>
+                <option value="Accredited">Accredited</option>
+         
+              </select>
+                  
+      </div> -->
+    </div>
+    <div class="col-md-3">
+    <!--<div style="margin:10px;">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">isActive</button>
+    </div> -->
+    </div>
+    <div class="col-md-3">
+       <!-- <div class="input-group margin">
+      <center>
+                  <label class="switch">
+                    <input type="checkbox" name="Supplier_l" value="1"  >
+                    <span class="slider"></span>
+                  </label>
+                 
+      </center>
+    </div> -->
+    </div>
+  </div>
+<br>
+ 
+  <button type="submit" class="btn  btn-success btn-flat"  style="float:right;" name="addSuppliers">Save</button>
+  </form>  
+
+  <br>
+  <br>
+  <div class="divider"></div>
+<?php 
+}
+
+?>
+
+
+ <?php 
+
+
+function frm_edit_stocks()
+{
+?>
+<div class="divider"></div>
+  <form  role="form" action="LV_submit.php" method="post"   enctype="multipart/form-data" >
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px" >Tag/Code</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Supplier_a"  required>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">S/N</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Supplier_c"  required>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Supplier</button>
+                  </div>
+                
+              <select name="Supplier_b"  class="form-control" required>
+                 <option value=" " Selected> </option>
+                 <?php $xQx=getStocks();
+                 
+                      while($row=mysqli_fetch_array($xQx))
+
+                      {
+                        echo "
+                        <option value='".$row[0]."' >".$row[1]."</option>
+                        ";
+                      }
+                 ?>
+              
+              </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Item Group</button>
+                  </div>
+                
+              <select name="Supplier_b"  class="form-control" required>
+                 <option value=" " Selected> </option>
+                 <?php $xQx=getStocks();
+                 
+                      while($row=mysqli_fetch_array($xQx))
+
+                      {
+                        echo "
+                        <option value='".$row[0]."' >".$row[1]."</option>
+                        ";
+                      }
+                 ?>
+              
+              </select>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Item</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Supplier_e"  required>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Brand</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Supplier_f"  required>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Model</button>
+                  </div>
+                  <input type="email" class="form-control"  name="Supplier_g"  required>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Description</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Supplier_h" >
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Unit Price</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Supplier_i" >
+
+              
+      </div>
+    </div>
+  </div>
+    
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Date of Purchase</button>
+                  </div>
+                  <input type="date" class="form-control"  name="Supplier_j"  >
+
+              
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">End of Warranty</button>
+                  </div>
+                  <input type="date" class="form-control"  name="Supplier_k"  >
+
+              
+      </div>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+  </div>
+
+
+  <div class="row">
+<div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Delivery Date</button>
+                  </div>
+                  <input type="date" class="form-control"  name="Supplier_l"  >
+
+              
+      </div>
+</div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+    <center>
+              <button type="button" class="btn btn-block btn-primary btn-flat" style="width:98%; ">Remarks</button>
+              <textarea  style="width:98%; resize: none;" rows="5" class="form-control"  name="Supplier_j"  ></textarea>
+    </center>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+         <!--<div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Suppliers Type</button>
+                  </div>
+              <select name="Supplier_k"  class="form-control"  required>
+                <option value=" " Selected> </option>
+                <option value="Potential">Potential</option>
+                <option value="Accredited">Accredited</option>
+         
+              </select>
+                  
+      </div> -->
+    </div>
+    <div class="col-md-3">
+    <!--<div style="margin:10px;">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">isActive</button>
+    </div> -->
+    </div>
+    <div class="col-md-3">
+       <!-- <div class="input-group margin">
+      <center>
+                  <label class="switch">
+                    <input type="checkbox" name="Supplier_l" value="1"  >
+                    <span class="slider"></span>
+                  </label>
+                 
+      </center>
+    </div> -->
+    </div>
+  </div>
+<br>
+ 
+  <button type="submit" class="btn  btn-success btn-flat"  style="float:right;" name="addSuppliers">Update</button>
+  </form>  
+
+  <br>
+  <br>
+  <div class="divider"></div>
+    <?php 
+    
+}
+
+?>
+
+
+
+
+ <?php 
+
+
+function frm_edit_groups()
+{
+?>
+<div class="divider"></div>
+  <form  role="form" action="LV_submit.php" method="post"   enctype="multipart/form-data" >
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Category Name</button>
+                  </div>
+                  <input type="text" class="form-control"  name="Category_a"  required>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="row">
+    <div class="col-md-6">
+         <!--<div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Suppliers Type</button>
+                  </div>
+              <select name="Supplier_k"  class="form-control"  required>
+                <option value=" " Selected> </option>
+                <option value="Potential">Potential</option>
+                <option value="Accredited">Accredited</option>
+         
+              </select>
+                  
+      </div> -->
+    </div>
+    <div class="col-md-3">
+    <!--<div style="margin:10px;">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">isActive</button>
+    </div> -->
+    </div>
+    <div class="col-md-3">
+       <!-- <div class="input-group margin">
+      <center>
+                  <label class="switch">
+                    <input type="checkbox" name="Supplier_l" value="1"  >
+                    <span class="slider"></span>
+                  </label>
+                 
+      </center>
+    </div> -->
+    </div>
+  </div>
+<br>
+ 
+  <button type="submit" class="btn  btn-success btn-flat"  style="float:right;" name="addSuppliers">Save</button>
+  </form>  
+
+  <br>
+  <br>
+  <div class="divider"></div>
+    <?php 
+    
+}
+
+?>
+
+
+
+
+<?php 
+
+
+function frm_add_groups()
+{
+?>
+<div class="divider"></div>
+  <form  role="form" action="LV_submit.php" method="post"   enctype="multipart/form-data" >
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Category Name</button>
+                  </div>
+                  <input type="text" class="form-control"  name="groupa"  required>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="row">
+    <div class="col-md-6">
+         <!--<div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Suppliers Type</button>
+                  </div>
+              <select name="Supplier_k"  class="form-control"  required>
+                <option value=" " Selected> </option>
+                <option value="Potential">Potential</option>
+                <option value="Accredited">Accredited</option>
+         
+              </select>
+                  
+      </div> -->
+    </div>
+    <div class="col-md-3">
+    <!--<div style="margin:10px;">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">isActive</button>
+    </div> -->
+    </div>
+    <div class="col-md-3">
+       <!-- <div class="input-group margin">
+      <center>
+                  <label class="switch">
+                    <input type="checkbox" name="Supplier_l" value="1"  >
+                    <span class="slider"></span>
+                  </label>
+                 
+      </center>
+    </div> -->
+    </div>
+  </div>
+<br>
+ 
+  <button type="submit" class="btn  btn-success btn-flat"  style="float:right;" name="addGroups">Save</button>
+  </form>  
+
+  <br>
+  <br>
+  <div class="divider"></div>
+<?php 
+}
+
+?>
+
+
+
+<?php 
+
+
+function frm_add_stocks_a()
+{
+?>
+<div class="divider"></div>
+  <form  role="form" action="LV_submit.php" method="post"   enctype="multipart/form-data" >
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px" >Tag/Code</button>
+                  </div>
+                  <input type="text" class="form-control"  name="stock_a"  required>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">S/N</button>
+                  </div>
+                  <input type="text" class="form-control"  name="stock_b"  required>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Supplier</button>
+                  </div>
+                
+              <select name="stock_c"  class="form-control" required>
+                 <option value=" " Selected> </option>
+                 <?php $xQx=getSupplier();
+                 
+                      while($row=mysqli_fetch_array($xQx))
+
+                      {
+                        echo "
+                        <option value='".$row[0]."' >".$row[1]."</option>
+                        ";
+                      }
+                 ?>
+              
+              </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Item Group</button>
+                  </div>
+                
+              <select name="stock_d"  class="form-control" required>
+                 <option value=" " Selected> </option>
+                 <?php $xQx=getGroup();
+                 
+                      while($row=mysqli_fetch_array($xQx))
+
+                      {
+                        echo "
+                        <option value='".$row[0]."' >".$row[1]."</option>
+                        ";
+                      }
+                 ?>
+              
+              </select>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Item</button>
+                  </div>
+                  <input type="text" class="form-control"  name="stock_e"  required>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Brand</button>
+                  </div>
+                  <input type="text" class="form-control"  name="stock_f"  required>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Model</button>
+                  </div>
+                  <input type="text" class="form-control"  name="stock_g"  required>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Description</button>
+                  </div>
+                  <input type="text" class="form-control"  name="stock_h" required>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Unit Price</button>
+                  </div>
+                  <input type="text" class="form-control"  name="stock_i" required>
+
+              
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Sell Price</button>
+                  </div>
+                  <input type="text" class="form-control"  name="stock_j" required>
+
+              
+      </div>
+    </div>
+
+  </div>
+    
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Date of Purchase</button>
+                  </div>
+                  <input type="date" class="form-control"  name="stock_k"  required>
+
+              
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">End of Warranty</button>
+                  </div>
+                  <input type="date" class="form-control"  name="stock_l"  required>
+
+              
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Delivery Date</button>
+                  </div>
+                  <input type="date" class="form-control"  name="stock_m" required >
+
+              
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+    <center>
+              <button type="button" class="btn btn-block btn-primary btn-flat" style="width:98%; ">Remarks</button>
+              <textarea  style="width:98%; resize: none;" rows="5" class="form-control"  name="stock_n" required></textarea>
+    </center>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+         <!--<div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Suppliers Type</button>
+                  </div>
+              <select name="Supplier_k"  class="form-control"  required>
+                <option value=" " Selected> </option>
+                <option value="Potential">Potential</option>
+                <option value="Accredited">Accredited</option>
+         
+              </select>
+                  
+      </div> -->
+    </div>
+    <div class="col-md-3">
+    <!--<div style="margin:10px;">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">isActive</button>
+    </div> -->
+    </div>
+    <div class="col-md-3">
+       <!-- <div class="input-group margin">
+      <center>
+                  <label class="switch">
+                    <input type="checkbox" name="Supplier_l" value="1"  >
+                    <span class="slider"></span>
+                  </label>
+                 
+      </center>
+    </div> -->
+    </div>
+  </div>
+<br>
+ 
+  <button type="submit" class="btn  btn-success btn-flat"  style="float:right;" name="addstocks">Save</button>
+  </form>  
+
+  <br>
+  <br>
+  <div class="divider"></div>
+<?php 
+}
+
+?>
