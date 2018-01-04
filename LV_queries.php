@@ -18,6 +18,32 @@ function getSupplier()
   $query=mysqli_query($conn,$xQx);
   return  $query;
 }   
+function getBusType()
+{
+  global $conn;
+  $xQx = "SELECT busTypeId,";
+  $xQx .= "busTypeName,";
+
+  $xQx .= "FROM suppliers ";
+  $xQx .= "WHERE isDeleted = 0";
+  $query=mysqli_query($conn,$xQx);
+  return  $query;
+}   
+
+function getInvoice()
+{
+  global $conn;
+  $xQx = "SELECT invoiceId,";
+  $xQx .= "clientId,";
+  $xQx .= "bustypeId,";
+  $xQx .= "clientId ";
+  $xQx .= "FROM invoices ";
+  $xQx .= "WHERE isDeleted = 0";
+  $query=mysqli_query($conn,$xQx);
+  return  $query;
+}   
+
+
 
 function getStocks()
 {
@@ -34,6 +60,7 @@ function getStocks()
   $xQx .= "description,";
   $xQx .= "unitPrice, ";
   $xQx .= "sellPrice, ";
+  $xQx .= "quantity, "; 
   $xQx .= "date_purchased, ";
   $xQx .= "endofWarranty_date, ";
   $xQx .= "delivery_date ";
@@ -89,7 +116,29 @@ function addSupplier($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l)
     return  $query;
 }
 
-function addstocks($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m,$n,$o)
+
+function addinvoice($a,$b,$c,$d,$e,$f,$g)
+{
+    global $conn;
+    $xQx = "INSERT INTO invoices(";
+    $xQx .= "invoiceId,";
+    $xQx .= "clientId,";
+    $xQx .= "busTypeId,";
+    $xQx .= "date_created,";
+    $xQx .= "due_date,";
+    $xQx .= "remarks,";
+    $xQx .= "isDeleted) ";
+    $xQx .=" VALUES (";
+    $xQx .=" '$a','$b','$c','$d','$e','$f','$g') ";
+    $query=mysqli_query($conn,$xQx);
+    return  $query;
+}
+
+
+
+
+
+function addstocks($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m,$n,$q,$o)
 {
     global $conn;
     $xQx = "INSERT INTO assetstwo(";
@@ -107,9 +156,10 @@ function addstocks($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m,$n,$o)
     $xQx .= "endofWarranty_date,";
     $xQx .= "delivery_date,";
     $xQx .= "remarks,";
+    $xQx .= "quantity,"; 
     $xQx .= "isDeleted)";
     $xQx .=" VALUES (";
-    $xQx .=" '$a','$b','$c','$d','$e','$f','$g','$h','$i','$j','$k','$l','$m','$n','$o')";
+    $xQx .=" '$a','$b','$c','$d','$e','$f','$g','$h','$i','$j','$k','$l','$m','$n','$q','$o')";
     $query=mysqli_query($conn,$xQx);
     return  $query;
 }
@@ -325,5 +375,21 @@ function getEdit_Clients($a)
   return  $query;
 
 }
+
+function getItems()
+{
+  global $conn;
+  $xQx = "SELECT assetsId,";
+  $xQx .= "assetName ";
+  $xQx .= "FROM assetstwo ";
+  $xQx .= "WHERE isDeleted = '0'";
+  $query=mysqli_query($conn,$xQx);
+
+  return  $query;
+
+}
+
+
+
 
 ?>

@@ -367,9 +367,71 @@ function frm_edit_supplier()
 
 }
 
+function frm_add_itemsinvo()
+
+{
+
+?>
+
+  <div class="divider"></div>
+
+  <form  role="form" action="LV_submit.php" method="post"   enctype="multipart/form-data" >
 
 
-function frm_edit_client()
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Item</button>
+                  </div>
+                
+              <select name="items_a"  class="form-control" required>
+                 <option value=" " Selected> </option>
+                 <?php $xQx=getItems();
+                 
+                      while($row=mysqli_fetch_array($xQx))
+
+                      {
+                        echo "
+                        <option value='".$row[0]."' >".$row[1]."</option>
+                        ";
+                      }
+                 ?>
+              
+              </select>
+      </div>
+
+
+      <div class="input-group margin">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-block btn-primary btn-flat size-125px">SC TIN</button>
+            </div>
+           
+     <!--   <input type='text' class='form-control'  name='Client_m'  value='".$row[13]."> -->
+
+ 
+            <?php echo " <input type='text' class='form-control'  name='Client_m'   disabled value='".$row[13]."'>"; ?>
+   
+      </div>
+
+
+      <div class="input-group margin">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-block btn-primary btn-flat size-125px">OSCA/PWD/ID No.</button>
+            </div>
+           
+            <input type="number" class="form-control"  name="itemrange"  min="1" max="5">
+      </div>
+
+
+  </form>
+
+
+
+
+
+<?php
+}
+
+function frm_edit_client_a()
 {
   ?>
   <div class="divider"></div>
@@ -885,7 +947,7 @@ function frm_add_stocks()
 
 
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="input-group margin">
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Item</button>
@@ -893,7 +955,7 @@ function frm_add_stocks()
                   <input type="text" class="form-control"  name="Supplier_e"  required>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="input-group margin">
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Brand</button>
@@ -901,14 +963,25 @@ function frm_add_stocks()
                   <input type="text" class="form-control"  name="Supplier_f"  required>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="input-group margin">
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Model</button>
                   </div>
-                  <input type="email" class="form-control"  name="Supplier_g"  required>
+                 <input type="email" class="form-control"  name="Supplier_g"  required>
       </div>
     </div>
+    <div class="col-md-3">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Quantity</button>
+                  </div>
+                  <input type="email" class="form-control"  name="Supplier_q"  required>
+      </div>
+    </div>
+
+
+
   </div>
 
   
@@ -1463,7 +1536,7 @@ function frm_add_stocks_a()
 
 
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="input-group margin">
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Item</button>
@@ -1471,7 +1544,7 @@ function frm_add_stocks_a()
                   <input type="text" class="form-control"  name="stock_e"  required>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="input-group margin">
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Brand</button>
@@ -1479,7 +1552,7 @@ function frm_add_stocks_a()
                   <input type="text" class="form-control"  name="stock_f"  required>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="input-group margin">
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Model</button>
@@ -1487,6 +1560,17 @@ function frm_add_stocks_a()
                   <input type="text" class="form-control"  name="stock_g"  required>
       </div>
     </div>
+    <div class="col-md-3">
+      <div class="input-group margin">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Quantity</button>
+                  </div>
+                  <input type="number" class="form-control"  name="stock_q"  required  pattern="[0-9]">
+      </div>
+    </div>
+
+
+
   </div>
 
   
@@ -1504,7 +1588,7 @@ function frm_add_stocks_a()
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Unit Price</button>
                   </div>
-                  <input type="text" class="form-control"  name="stock_i" required>
+                  <input type="number" class="form-control"  name="stock_i" required>
 
               
       </div>
@@ -1515,7 +1599,7 @@ function frm_add_stocks_a()
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Sell Price</button>
                   </div>
-                  <input type="text" class="form-control"  name="stock_j" required>
+                  <input type="number" class="form-control"  name="stock_j" required>
 
               
       </div>

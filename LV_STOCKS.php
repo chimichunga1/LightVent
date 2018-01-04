@@ -102,6 +102,7 @@ $(document).ready(function(){
           null,
           null,
           null,
+     
           { "orderSequence": [ "" ] }
         
       ]

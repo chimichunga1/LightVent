@@ -23,6 +23,38 @@ if (isset($_POST['addSuppliers']))
 <?php
 }
 
+if (isset($_POST['addInvoice']))
+{
+//-----------------------------------------------
+    if(empty($_POST['invoice_a']))
+    {
+
+    }
+    else
+    {
+
+$a = $_POST['invoice_a'];
+$b = $_POST['invoice_b'];
+$c = $_POST['invoice_c'];
+$d = $_POST['invoice_d'];
+$e = $_POST['invoice_e'];
+$f = $_POST['invoice_f'];
+
+
+$xQx = "INSERT INTO invoices(invoiceId,clientId,busTypeId,date_created,due_date,remarks,isDeleted)VALUES ('$a','$b','$c','$d','$e','$f','0')";
+        $query=mysqli_query($conn,$xQx);
+    }
+//-----------------------------------------------
+    ?>
+    <script>   
+    window.location.href="admin.php?x=INVOICES";
+    </script>
+<?php
+}
+
+
+
+
 if (isset($_POST['delSupplier']))
 {
 //-----------------------------------------------
@@ -145,7 +177,7 @@ if (isset($_POST['addstocks']))
     else
     {
   
-         addstocks($_POST['stock_a'],$_POST['stock_b'],$_POST['stock_c'],$_POST['stock_d'],$_POST['stock_e'],$_POST['stock_f'],$_POST['stock_g'],$_POST['stock_h'],$_POST['stock_i'],$_POST['stock_j'],$_POST['stock_k'],$_POST['stock_l'],$_POST['stock_m'],$_POST['stock_n'],'0');   
+         addstocks($_POST['stock_a'],$_POST['stock_b'],$_POST['stock_c'],$_POST['stock_d'],$_POST['stock_e'],$_POST['stock_f'],$_POST['stock_g'],$_POST['stock_h'],$_POST['stock_i'],$_POST['stock_j'],$_POST['stock_k'],$_POST['stock_l'],$_POST['stock_m'],$_POST['stock_n'],$_POST['stock_q'],'0');   
 
     }
 //-----------------------------------------------
