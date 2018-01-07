@@ -616,6 +616,10 @@ function tbl_invoice()
               $DeleteModal="DeleteModal".$row[0];
               $AddItemModal="AddItemModal".$row[0];
               $ViewItemModal="ViewItemModal".$row[0];
+              $PayoutModal=$row[0];
+
+
+
               $get_assets = $row[0];
               echo" 
               <tr>
@@ -633,7 +637,7 @@ function tbl_invoice()
 
 
 
-              <div class='col-md-3'>
+              <div class='col-md-4'>
               ";
               ?>
             <?php
@@ -650,16 +654,27 @@ function tbl_invoice()
             <?php
             echo '
             <button type="button" class="btn btn-block btn-primary btn-flat" data-toggle="modal" data-target="#'.$ViewItemModal.'"><i class="fa fa-eye"></i></button></center> </div>
-<div class="col-md-3">
+<div class="col-md-4">
           
 
             <button type="button" class="btn btn-block btn-warning btn-flat" data-toggle="modal" data-target="#'.$EditModal.'"><i class="fa fa-edit"></i></button></center> </div>
-<div class="col-md-3">
+<div class="col-md-4">
           <form action="admin.php?x=SAMPLE" method="post">
             <button type="submit" class="btn btn-block btn-success btn-flat"><i class="fa fa-plus"></i></button></center> </div>
             <input type="hidden" name="id"  value="'.$get_assets.'" >
             </form>
-            ';
+            '
+
+
+
+
+
+
+
+
+
+
+            ;
 
 
             ?>
@@ -676,20 +691,37 @@ function tbl_invoice()
 
             <?php
               echo "
-             
-              <div class='col-md-3'>";
+             </div>
+        ";
               ?>
             <?php
             echo '
-            <button type="button" class="btn btn-block btn-danger btn-flat" data-toggle="modal" data-target="#'.$DeleteModal.'"><i class="fa fa-remove"></i></button></center>
+        
             ';
             ?>
             <?php
-              echo "
+              echo '
+             
               </div>
+
+
+              <div class="row">
+<div class="col-md-6">
+          <form action="admin.php?x=PAYOUT" method="post">
+            <button type="submit" class="btn btn-block btn-yellow btn-flat"><i class="fa fa-money"></i></button></center> 
+            <input type="hidden" name="id"  value="'.$PayoutModal.'" >
+            </form>
+
+</div>
+
+
+<div class="col-md-6">
+    <button type="button" class="btn btn-block btn-danger btn-flat" data-toggle="modal" data-target="#'.$DeleteModal.'"><i class="fa fa-remove"></i></button></center>
+
+</div>  
               </div>
               </td>
-              </tr>";
+              </tr>';
 
 /*  echo "   
   <div id='".$ViewItemModal."' class='modal fade'>

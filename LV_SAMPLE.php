@@ -2,7 +2,12 @@
 
 if(!isset($_POST['id']))
 {
-	$sample = $_SESSION["invoiceId_submit"];
+	
+?>
+    <script>   
+    window.location.href="admin.php?x=SALES%20INVOICES";
+    </script>
+<?PHP
 }
 else
 {
