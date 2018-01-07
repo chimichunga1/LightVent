@@ -1,8 +1,17 @@
 <div class="wrapper" style="background-color:transparent;">
 
-<div><p>MANAGE CLIENTS</p></div>
+<div><p>MANAGE GROUPS</p></div>
 
 <style>
+ th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        margin: 0 auto;
+    }
+ 
+    div.container {
+        width: 80%;
+    }
+
   .switch {
   position: relative;
   display: inline-block;
@@ -11,6 +20,7 @@
   background-color:#3c8dbc;
   border-color:#367fa9;
   
+
 }
 
 /* Hide default HTML checkbox */
@@ -78,23 +88,28 @@ input::-webkit-inner-spin-button {
 }
 
 </style>
-  
-
+     
 <script>
 $(document).ready(function(){
-    $('#ManageClients').DataTable({
+    $('#Managegroups').DataTable({
+        
+      
+
       "aoColumns": [
           null,
           null,
-          null, 
+          null,
+          null,
+          null,
+          null,
           { "orderSequence": [ "" ] }
         
       ]
   } );
     
 
-    $("#addbtn").click(function(){
-        $("#panel").slideToggle("slow");
+    $("#addbtn_groups").click(function(){
+        $("#panel_groups").slideToggle("slow");
     });
 
 
@@ -107,14 +122,16 @@ $(document).ready(function(){
     
 
     <div class="rows">
-            <div class="col-md-12" id="addbtn">
+            <div class="col-md-12" id="addbtn_groups">
                 <button type="button"  class="btn btn-block btn-success btn-flat">ADD</button>
             </div>
     </div>
 
-<div id="panel">
+<div id="panel_groups" style="display: none;">
+<br><br>
 <?php
-frm_add_client();
+
+frm_add_groups();
 ?>
 </div>
 
@@ -123,7 +140,7 @@ frm_add_client();
 <br>
 
 <?php
-tbl_client();
+tbl_groups();
 ?>
 
 

@@ -41,13 +41,13 @@ $e = $_POST['invoice_e'];
 $f = $_POST['invoice_f'];
 
 
-$xQx = "INSERT INTO invoices(invoiceId,clientId,busTypeId,date_created,due_date,remarks,isDeleted)VALUES ('$a','$b','$c','$d','$e','$f','0')";
+$xQx = "INSERT INTO invoices(invoiceStatId,clientId,busTypeId,date_created,due_date,remarks,isDeleted)VALUES ('$a','$b','$c','$d','$e','$f','0')";
         $query=mysqli_query($conn,$xQx);
     }
 //-----------------------------------------------
     ?>
     <script>   
-    window.location.href="admin.php?x=INVOICES";
+    window.location.href="admin.php?x=SALES%20INVOICES";
     </script>
 <?php
 }
@@ -167,6 +167,115 @@ if (isset($_POST['addGroups']))
 
 
 
+
+
+
+
+
+
+
+if (isset($_POST['add_busType']))
+{
+
+
+
+$busType = $_POST["busType"];
+
+  $xQx_insert = "INSERT INTO businesstypes (busTypeName, isDeleted) VALUES ('$busType','0')";
+  $query_insert=mysqli_query($conn,$xQx_insert);
+
+?>
+    <script>   
+    window.location.href="admin.php?x=MAINTENANCE";
+    </script>
+
+    <?php
+
+}
+
+
+
+if (isset($_POST['del_busType']))
+{
+
+
+
+$busType = $_POST["delbusType"];
+
+  $xQx_update = "UPDATE businesstypes SET isDeleted = '1' WHERE busTypeId = $busType";
+  $query_update=mysqli_query($conn,$xQx_update);
+
+?>
+    <script>   
+    window.location.href="admin.php?x=MAINTENANCE";
+    </script>
+
+    <?php
+
+}
+
+if (isset($_POST['del_catType']))
+{
+
+
+
+$catType = $_POST["delcatType"];
+
+  $xQx_update = "UPDATE categories SET isDeleted = '1' WHERE catId = $catType";
+  $query_update=mysqli_query($conn,$xQx_update);
+
+?>
+    <script>   
+    window.location.href="admin.php?x=MAINTENANCE";
+    </script>
+
+    <?php
+
+}
+
+
+
+
+if (isset($_POST['add_catType']))
+{
+
+
+
+$catType = $_POST["catType"];
+
+  $xQx_insert = "INSERT INTO categories (categoryName, isDeleted) VALUES ('$catType','0')";
+  $query_insert=mysqli_query($conn,$xQx_insert);
+
+?>
+    <script>   
+    window.location.href="admin.php?x=MAINTENANCE";
+    </script>
+
+    <?php
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if (isset($_POST['addstocks']))
 {
 //-----------------------------------------------
@@ -204,6 +313,67 @@ delStock($_POST['stockId']);
 
 }
 
+if (isset($_POST['delInvoice']))
+{
+//-----------------------------------------------
+delInvoice($_POST['InvoiceId']);
+//-----------------------------------------------
+    ?>
+    <script>   
+    window.location.href="admin.php?x=SALES%20INVOICES";
+    </script>
+<?php
+}
 
 
+if (isset($_POST['addItems_invoice']))
+{
+
+//use assetsID to and insert items_ordered
+
+$assetsId = $_SESSION["assetsId_invoice"];
+;
+(int)$itemrange_order = $_POST["itemrange"];
+
+  $xQx = "SELECT assetName,quantity FROM assetstwo WHERE assetsId = '$assetsId'";
+  $query=mysqli_query($conn,$xQx);
+
+
+            while($row = mysqli_fetch_array($query))
+
+                { 
+
+                    $quantity = $row["quantity"];
+                    $assetName = $row["assetName"];
+
+                }
+
+$item_order = (int)$quantity - $itemrange_order;
+
+$unitPrice_ordered = $_SESSION["unitPrice"];
+$sellPrice_ordered = $_SESSION["sellPrice"];
+$invoiceId_submit = $_SESSION["invoiceId_submit"];
+
+
+
+
+  $xQx_insert = "INSERT INTO items_ordered (assetsId, assetName, quantity, unitPrice, sellPrice, invoiceId,isDeleted) VALUES ('$assetsId','$assetName','$itemrange_order','$unitPrice_ordered','$sellPrice_ordered','$invoiceId_submit','0')";
+  $query_insert=mysqli_query($conn,$xQx_insert);
+
+  $xQx_update = "UPDATE assetstwo SET quantity = $item_order WHERE assetsId = $assetsId";
+  $query_update=mysqli_query($conn,$xQx_update);
+
+
+
+
+
+}
+
+?>
+
+    <script>   
+    window.location.href="admin.php?x=SALES%20INVOICES";
+    </script>
+
+    <?php
 ?>

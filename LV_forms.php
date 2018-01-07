@@ -373,9 +373,24 @@ function frm_add_itemsinvo()
 
 ?>
 
+<script>
+  
+
+function getState(val) {
+    $.ajax({
+    type: "POST",
+    url: "lv_getitems.php",
+    data:'positionname='+val,
+    success: function(data){
+        $("#item_stock").html(data);
+    }
+    });
+}
+
+</script>
   <div class="divider"></div>
 
-  <form  role="form" action="LV_submit.php" method="post"   enctype="multipart/form-data" >
+
 
 
       <div class="input-group margin">
@@ -383,14 +398,15 @@ function frm_add_itemsinvo()
                     <button type="button" class="btn btn-block btn-primary btn-flat size-125px">Item</button>
                   </div>
                 
-              <select name="items_a"  class="form-control" required>
+              <select name="items_a"  class="form-control" onChange="getState(this.value)" required >
                  <option value=" " Selected> </option>
                  <?php $xQx=getItems();
                  
                       while($row=mysqli_fetch_array($xQx))
 
-                      {
+                      { 
                         echo "
+
                         <option value='".$row[0]."' >".$row[1]."</option>
                         ";
                       }
@@ -399,30 +415,18 @@ function frm_add_itemsinvo()
               </select>
       </div>
 
-
-      <div class="input-group margin">
-            <div class="input-group-btn">
-              <button type="button" class="btn btn-block btn-primary btn-flat size-125px">SC TIN</button>
-            </div>
-           
      <!--   <input type='text' class='form-control'  name='Client_m'  value='".$row[13]."> -->
+       <div id="item_stock">
 
- 
-            <?php echo " <input type='text' class='form-control'  name='Client_m'   disabled value='".$row[13]."'>"; ?>
+</div>
+
    
-      </div>
 
 
-      <div class="input-group margin">
-            <div class="input-group-btn">
-              <button type="button" class="btn btn-block btn-primary btn-flat size-125px">OSCA/PWD/ID No.</button>
-            </div>
-           
-            <input type="number" class="form-control"  name="itemrange"  min="1" max="5">
-      </div>
 
 
-  </form>
+<br><br>
+
 
 
 
@@ -1692,4 +1696,22 @@ function frm_add_stocks_a()
 <?php 
 }
 
+
+function frm_invoice_items()
+{
+
 ?>
+
+
+
+
+<?php
+}
+
+
+
+
+
+?>
+
+

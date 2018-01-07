@@ -65,7 +65,7 @@ function getStocks()
   $xQx .= "endofWarranty_date, ";
   $xQx .= "delivery_date ";
   $xQx .= "FROM assetstwo ";
-  $xQx .= "WHERE isDeleted = 0";
+  $xQx .= "WHERE isDeleted = 0 AND quantity != 0";
   $query=mysqli_query($conn,$xQx);
   return  $query;
 }   
@@ -255,7 +255,7 @@ function getallSup_BusType()
 {
   global $conn;
   $xQx = "SELECT busTypeId,busTypeName ";
-  $xQx .=  "FROM businesstypes WHERE NOT busTypeId = 0 ";
+  $xQx .=  "FROM businesstypes WHERE NOT busTypeId = 0 AND isDeleted = 0";
   $query=mysqli_query($conn,$xQx);
   return  $query;
 }
@@ -294,6 +294,15 @@ function delClient($a)
   $xQx = "UPDATE clients ";
   $xQx .=  "SET isDeleted = 1 ";
   $xQx .=  "WHERE clientId='$a'";
+  $query=mysqli_query($conn,$xQx);
+  return  $query;
+}
+function delInvoice($a)
+{
+  global $conn;
+  $xQx = "UPDATE invoices ";
+  $xQx .=  "SET isDeleted = 1 ";
+  $xQx .=  "WHERE invoiceId='$a'";
   $query=mysqli_query($conn,$xQx);
   return  $query;
 }
@@ -377,6 +386,20 @@ function getEdit_Clients($a)
 }
 
 function getItems()
+{
+  global $conn;
+  $xQx = "SELECT assetsId,";
+  $xQx .= "assetName, ";
+  $xQx .= "quantity ";
+  $xQx .= "FROM assetstwo ";
+  $xQx .= "WHERE isDeleted = '0'";
+  $query=mysqli_query($conn,$xQx);
+
+  return  $query;
+
+}
+
+function getItem_quantity()
 {
   global $conn;
   $xQx = "SELECT assetsId,";

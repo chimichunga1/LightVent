@@ -21,9 +21,9 @@ function tbl_supplier()
 
           while($row=mysqli_fetch_array($xQx))
             {
-              $SeeModal="SeeModal".$row[0];
-              $EditModal="EditModal".$row[0];
-              $DeleteModal="DeleteModal".$row[0];
+              $SeeModal_supplier="SeeModal".$row[0];
+              $EditModal_supplier="EditModal".$row[0];
+              $DeleteModal_supplier="DeleteModal".$row[0];
               echo" 
               <tr>
               <td>$row[1]</td>
@@ -36,7 +36,7 @@ function tbl_supplier()
               ?>
             <?php
             echo '
-            <button type="button" class="btn btn-block btn-info btn-flat" data-toggle="modal" data-target="#'.$SeeModal.'"><i class="fa fa-eye"></i></button></center>
+            <button type="button" class="btn btn-block btn-info btn-flat" data-toggle="modal" data-target="#'.$SeeModal_supplier.'"><i class="fa fa-eye"></i></button></center>
             ';
             ?>
             <?php
@@ -47,7 +47,7 @@ function tbl_supplier()
               ?>
             <?php
             echo '
-            <button type="button" class="btn btn-block btn-warning btn-flat" data-toggle="modal" data-target="#'.$EditModal.'"><i class="fa fa-edit"></i></button></center>
+            <button type="button" class="btn btn-block btn-warning btn-flat" data-toggle="modal" data-target="#'.$EditModal_supplier.'"><i class="fa fa-edit"></i></button></center>
             ';
             ?>
             <?php
@@ -57,7 +57,7 @@ function tbl_supplier()
               ?>
             <?php
             echo '
-            <button type="button" class="btn btn-block btn-danger btn-flat" data-toggle="modal" data-target="#'.$DeleteModal.'"><i class="fa fa-remove"></i></button></center>
+            <button type="button" class="btn btn-block btn-danger btn-flat" data-toggle="modal" data-target="#'.$DeleteModal_supplier.'"><i class="fa fa-remove"></i></button></center>
             ';
             ?>
             <?php
@@ -67,7 +67,7 @@ function tbl_supplier()
               </td>
               </tr>";
   echo "   
-  <div id='".$SeeModal."' class='modal fade'>
+  <div id='".$SeeModal_supplier."' class='modal fade'>
     <div class='modal-dialog'>
       <div class='modal-content'>
         <div class='modal-header'>
@@ -105,7 +105,7 @@ function tbl_supplier()
   </div>";
 
   echo "   
-  <div id='".$EditModal."' class='modal fade'>
+  <div id='".$EditModal_supplier."' class='modal fade'>
     <div class='modal-dialog modal-lg '>
       <div class='modal-content'>
         <div class='modal-header'>
@@ -127,7 +127,7 @@ function tbl_supplier()
 
 
   echo "   
-  <div id='".$DeleteModal."' class='modal fade'>
+  <div id='".$DeleteModal_supplier."' class='modal fade'>
     <div class='modal-dialog'>
       <div class='modal-content'>
         <div class='modal-header'>
@@ -159,170 +159,7 @@ function tbl_supplier()
 } 
 ?>
 
-<?php
-function tbl_client()
-{
-  ?>
-<!--   <table id="ManageClients" class="display" cellspacing="0" width="100%"> -->
-  <table id="ManageClients" class="ui celled table" cellspacing="0" width="100%">
-          <thead>
-              <tr>
-                  <th>Company Name</th>
-                  <th>Contact Person</th>
-                  <th>Telephone No.</th>
-                  <th>Action</th>
-            
-              </tr>
-          </thead>
-          <tbody>
-            <?php  
 
-
-        $xQx=getClient();
-
-          while($row=mysqli_fetch_array($xQx))
-            {
-              $SeeModal="SeeModal".$row[0];
-              $EditModal="EditModal".$row[0];
-              $DeleteModal="DeleteModal".$row[0];
-              echo" 
-              <tr>
-              <td>$row[1]</td>
-              <td>$row[2]</td>
-              <td>$row[3]</td>             
-              <td>
-              <div class='row'>
-              <div class='col-md-4'>
-              ";
-              ?>
-            <?php
-            echo '
-            <button type="button" class="btn btn-block btn-info btn-flat" data-toggle="modal" data-target="#'.$SeeModal.'"><i class="fa fa-eye"></i></button></center>
-            ';
-            ?>
-            <?php
-              echo "
-              </div>
-              <div class='col-md-4'>
-              ";
-              ?>
-            <?php
-            echo '
-            <button type="button" class="btn btn-block btn-warning btn-flat" data-toggle="modal" data-target="#'.$EditModal.'"><i class="fa fa-edit"></i></button></center>
-            ';
-            ?>
-            <?php
-              echo "
-              </div>
-              <div class='col-md-4'>";
-              ?>
-            <?php
-            echo '
-            <button type="button" class="btn btn-block btn-danger btn-flat" data-toggle="modal" data-target="#'.$DeleteModal.'"><i class="fa fa-remove"></i></button></center>
-            ';
-            ?>
-            <?php
-              echo "
-              </div>
-              </div>
-              </td>
-              </tr>";
-  echo "   
-  <div id='".$SeeModal."' class='modal fade'>
-    <div class='modal-dialog'>
-      <div class='modal-content'>
-        <div class='modal-header'>
-          <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-          <h4 class='modal-title'>INFORMATION </h4>
-        </div>
-        <div class='modal-body'>
-              <div class='row'>
-              ";
-         
-
-              $tag=array('','Client Name','Contact Person','Telephone No.','Mobile No.','Fax No.','Email');
-
-              for ($i=1; $i <=6 ; $i++) { 
-                  echo "
-                  <div class='input-group margin'>
-                  <div class='input-group-btn'>
-                  <button type='button' class='btn btn-block btn-primary btn-flat size-125px'>".$tag[$i]."</button>
-                  </div>
-                  <input type='text' class='form-control'   disabled style='' value='".$row[$i]."'>
-                  </div>
-              ";
-              }
-            
-
-              echo "      
-              
-              </div>
-        </div>
-        <div class='modal-footer'>
-        <button type='button' class='btn btn-primary' data-dismiss='modal'>OK</button>
-                        
-        </form>
-        </div>
-      </div>
-    </div>
-  </div>";
-
-  echo "   
-  <div id='".$EditModal."' class='modal fade'>
-    <div class='modal-dialog modal-lg '>
-      <div class='modal-content'>
-        <div class='modal-header'>
-          <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-          <h4 class='modal-title'>INFORMATION </h4>
-        </div>
-        <div class='modal-body'>
-  ";
-
- 
-
-$_SESSION['editclientid']=$row[0];
-  frm_edit_client();
-
-  echo "
-        
-        </div>
-      </div>
-    </div>
-  </div>";
-
-
-  echo "   
-  <div id='".$DeleteModal."' class='modal fade'>
-    <div class='modal-dialog'>
-      <div class='modal-content'>
-        <div class='modal-header'>
-          <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-          <h4 class='modal-title'>INFORMATION </h4>
-        </div>
-        <div class='modal-body'>
-          <form  role='form' action='LV_submit.php' method='post' id='partdelpost' enctype='multipart/form-data'>
-          <div class='form-group'>
-            <input type='text' class='form-control' id='clientId' name='clientId'  style='opacity:0;' value='".$row[0]."'>
-            <label ><center>Are you sure you want to delete '".$row[1]."' ?</center></label>
-          </div>
-        </div>
-        <div class='modal-footer'>
-                          <button type='submit' name='delClient'  class='btn btn-success'>Yes</button>
-                          <button type='button' class='btn btn-danger' data-dismiss='modal'>No</button>
-        </form>
-        </div>
-      </div>
-    </div>
-  </div>";      
-            }
-            ?>
-            
-          
-            </tbody>
-          </table>
-  <?php 
-} 
-?>
 
 
 <?php
@@ -750,6 +587,8 @@ function tbl_groups()
 <?php
 function tbl_invoice()
 {
+
+  include("connect.config.php");
   ?>
 <!--   <table id="ManageClients" class="display" cellspacing="0" width="100%"> -->
   <table id="ManageClients" class="ui celled table" cellspacing="0" width="100%">
@@ -767,26 +606,33 @@ function tbl_invoice()
             <?php  
 
 
-        $xQx=getInvoice();
+  $xQx = "SELECT invoiceId,clientId,bustypeName,date_created,due_date FROM invoices WHERE isDeleted = '0'";
+  $query_invoice=mysqli_query($conn,$xQx);
 
-          while($row=mysqli_fetch_array($xQx))
+          while($row=mysqli_fetch_array($query_invoice))
             {
 /*              $SeeModal="SeeModal".$row[0];*/
               $EditModal="EditModal".$row[0];
               $DeleteModal="DeleteModal".$row[0];
               $AddItemModal="AddItemModal".$row[0];
-
-
+              $ViewItemModal="ViewItemModal".$row[0];
+              $get_assets = $row[0];
               echo" 
               <tr>
+              <td>$row[0]</td>
               <td>$row[1]</td>
               <td>$row[2]</td>
-              <td>$row[3]</td>
               <td></td>
               <td></td>
 
               <td>
               <div class='row'>
+
+
+
+
+
+
               <div class='col-md-3'>
               ";
               ?>
@@ -803,12 +649,16 @@ function tbl_invoice()
               ?>
             <?php
             echo '
-            <button type="button" class="btn btn-block btn-warning btn-flat" data-toggle="modal" data-target="#'.$EditModal.'"><i class="fa fa-edit"></i></button></center> </div>
+            <button type="button" class="btn btn-block btn-primary btn-flat" data-toggle="modal" data-target="#'.$ViewItemModal.'"><i class="fa fa-eye"></i></button></center> </div>
 <div class="col-md-3">
           
-            <button type="button" class="btn btn-block btn-success btn-flat" data-toggle="modal" data-target="#'.$AddItemModal.'"><i class="fa fa-plus"></i></button></center> </div>
-            
 
+            <button type="button" class="btn btn-block btn-warning btn-flat" data-toggle="modal" data-target="#'.$EditModal.'"><i class="fa fa-edit"></i></button></center> </div>
+<div class="col-md-3">
+          <form action="admin.php?x=SAMPLE" method="post">
+            <button type="submit" class="btn btn-block btn-success btn-flat"><i class="fa fa-plus"></i></button></center> </div>
+            <input type="hidden" name="id"  value="'.$get_assets.'" >
+            </form>
             ';
 
 
@@ -840,7 +690,365 @@ function tbl_invoice()
               </div>
               </td>
               </tr>";
+
 /*  echo "   
+  <div id='".$ViewItemModal."' class='modal fade'>
+    <div class='modal-dialog'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+          <h4 class='modal-title'>INFORMATION </h4>
+        </div>
+        <div class='modal-body'>
+
+";
+
+?>
+<script>$(document).ready(function(){
+    $('#table_items_orders').DataTable({} );
+});</script>
+<table id="table_items_orders">
+  
+
+<thead>
+              <tr>
+                
+                     
+              </tr>
+          </thead>
+<tbody>
+<tr>
+<td>BAKIT</td>
+<td>andito TO</td>
+</tr>
+</tbody>
+
+</table>
+
+<?php
+
+echo "
+        </div>
+      </div>
+    </div>
+  </div>";
+*/
+  echo "   
+  <div id='".$AddItemModal."' class='modal fade'>
+    <div class='modal-dialog'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+          <h4 class='modal-title'>INFORMATION </h4>
+        </div>
+        <div class='modal-body'>
+  ";
+
+frm_add_itemsinvo();
+  echo "
+      
+        </div>
+      </div>
+    </div>
+  </div>";
+  echo "   
+  <div id='".$EditModal."' class='modal fade'>
+    <div class='modal-dialog modal-lg '>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+          <h4 class='modal-title'>INFORMATION </h4>
+        </div>
+        <div class='modal-body'>
+  ";
+
+ 
+
+
+
+
+  echo "
+        
+        </div>
+      </div>
+    </div>
+  </div>";
+
+
+  echo "   
+  <div id='".$DeleteModal."' class='modal fade'>
+    <div class='modal-dialog'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+          <h4 class='modal-title'>INFORMATION </h4>
+        </div>
+        <div class='modal-body'>
+          <form  role='form' action='LV_submit.php' method='post' id='partdelpost' enctype='multipart/form-data'>
+          <div class='form-group'>
+            <input type='text' class='form-control' id='clientId' name='InvoiceId'  style='opacity:0;' value='".$row[0]."'>
+            <label ><center>Are you sure you want to delete '".$row[1]."' ?</center></label>
+          </div>
+        </div>
+        <div class='modal-footer'>
+                          <button type='submit' name='delInvoice'  class='btn btn-success'>Yes</button>
+                          <button type='button' class='btn btn-danger' data-dismiss='modal'>No</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>";      
+  echo "   
+  <div id='".$ViewItemModal."' class='modal fade'>
+    <div class='modal-dialog modal-lg'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+          <h4 class='modal-title'>INFORMATION </h4>
+        </div>
+        <div class='modal-body'>
+              <div class='row'>
+<div class='col-md-2'>
+Item Name
+
+
+</div>         
+
+<div class='col-md-2'>
+Quantity
+
+
+</div>  
+
+<div class='col-md-2'>
+Unit Price
+
+
+</div>  
+
+
+<div class='col-md-2'>
+Sell Price
+
+
+</div>  
+
+
+
+<div class='col-md-2'>
+Handled By
+
+</div>  
+
+<div class='col-md-2'>
+Date
+
+</div>  
+
+  </div>
+<br><br>
+
+
+
+
+";
+$invoice_id  = $row[0];
+?>
+
+<?php 
+
+  $xQx = "SELECT * FROM items_ordered WHERE isDeleted = '0' AND invoiceId = $invoice_id";
+  $query=mysqli_query($conn,$xQx);
+
+
+            while($row = mysqli_fetch_array($query))
+
+                { 
+
+
+
+
+?>
+                <div class='row'>
+<div class='col-md-2'>
+
+<?php 
+echo $row[2];
+
+?>
+
+</div>         
+
+<div class='col-md-2'>
+
+
+<?php 
+echo $row[3];
+
+?>
+
+
+
+</div>  
+
+<div class='col-md-2'>
+
+
+<?php 
+echo $row[4];
+
+?>
+
+
+
+</div>  
+
+
+<div class='col-md-2'>
+<?php 
+echo $row[5];
+
+?>
+
+
+
+</div>  
+
+
+
+<div class='col-md-2'>
+<?php 
+echo $row[7];
+
+?>
+
+</div>  
+
+<div class='col-md-2'>
+<?php 
+echo $row[8];
+
+?>
+
+</div>  
+
+  </div>
+       <?php 
+   
+}
+
+             echo "      
+          
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <div class='modal-footer'>
+        <button type='button' class='btn btn-primary' data-dismiss='modal'>OK</button>
+                        
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>";
+  
+
+
+            }
+
+
+
+
+            ?>
+            
+          
+            </tbody>
+          </table>
+  <?php 
+} 
+
+
+
+
+
+
+
+
+function tbl_client()
+{
+  ?>
+<!--   <table id="ManageClients" class="display" cellspacing="0" width="100%"> -->
+  <table id="ManageClients" class="ui celled table" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Company Name</th>
+                  <th>Contact Person</th>
+                  <th>Telephone No.</th>
+                  <th>Action</th>
+            
+              </tr>
+          </thead>
+          <tbody>
+            <?php  
+
+
+        $xQx=getClient();
+
+          while($row=mysqli_fetch_array($xQx))
+            {
+              $SeeModal="SeeModal".$row[0];
+              $EditModal="EditModal".$row[0];
+              $DeleteModal="DeleteModal".$row[0];
+              echo" 
+              <tr>
+              <td>$row[1]</td>
+              <td>$row[2]</td>
+              <td>$row[3]</td>             
+              <td>
+              <div class='row'>
+              <div class='col-md-4'>
+              ";
+              ?>
+            <?php
+            echo '
+            <button type="button" class="btn btn-block btn-info btn-flat" data-toggle="modal" data-target="#'.$SeeModal.'"><i class="fa fa-eye"></i></button></center>
+            ';
+            ?>
+            <?php
+              echo "
+              </div>
+              <div class='col-md-4'>
+              ";
+              ?>
+            <?php
+            echo '
+            <button type="button" class="btn btn-block btn-warning btn-flat" data-toggle="modal" data-target="#'.$EditModal.'"><i class="fa fa-edit"></i></button></center>
+            ';
+            ?>
+            <?php
+              echo "
+              </div>
+              <div class='col-md-4'>";
+              ?>
+            <?php
+            echo '
+            <button type="button" class="btn btn-block btn-danger btn-flat" data-toggle="modal" data-target="#'.$DeleteModal.'"><i class="fa fa-remove"></i></button></center>
+            ';
+            ?>
+            <?php
+              echo "
+              </div>
+              </div>
+              </td>
+              </tr>";
+  echo "   
   <div id='".$SeeModal."' class='modal fade'>
     <div class='modal-dialog'>
       <div class='modal-content'>
@@ -878,25 +1086,8 @@ function tbl_invoice()
         </div>
       </div>
     </div>
-  </div>";*/
-  echo "   
-  <div id='".$AddItemModal."' class='modal fade'>
-    <div class='modal-dialog'>
-      <div class='modal-content'>
-        <div class='modal-header'>
-          <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-          <h4 class='modal-title'>INFORMATION </h4>
-        </div>
-        <div class='modal-body'>
-  ";
-
-frm_add_itemsinvo();
-  echo "
-        
-        </div>
-      </div>
-    </div>
   </div>";
+
   echo "   
   <div id='".$EditModal."' class='modal fade'>
     <div class='modal-dialog modal-lg '>
@@ -910,8 +1101,8 @@ frm_add_itemsinvo();
 
  
 
-
-
+$_SESSION['editclientid']=$row[0];
+  frm_edit_client();
 
   echo "
         
@@ -952,4 +1143,9 @@ frm_add_itemsinvo();
           </table>
   <?php 
 } 
+
+
+
+
 ?>
+

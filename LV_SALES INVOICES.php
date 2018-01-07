@@ -1,10 +1,13 @@
 <div class="wrapper" style="background-color:transparent;">
+
+
+
 <?php 
 
 
 
 
-function frm_add_clients()
+function frm_add_invoice_item()
 {
 ?>
 <div class="divider"></div>
@@ -207,7 +210,16 @@ $(document).ready(function(){
 
 
 });
-5
+
+
+
+
+
+
+
+
+
+
 </script>
 
 
@@ -222,7 +234,7 @@ $(document).ready(function(){
 
 <div id="panel">
 <?php
-frm_add_clients();
+frm_add_invoice_item();
 ?>
 </div>
 
@@ -233,7 +245,6 @@ frm_add_clients();
 <?php
 tbl_invoice();
 ?>
-
 
 
 

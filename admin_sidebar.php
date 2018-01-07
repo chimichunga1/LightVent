@@ -52,7 +52,8 @@
    for ($i=0; $i < $x ; $i++ ) 
    { 
   
-
+        if($i!=7)
+        {
               if(isset($_GET['x']))
               {
                 if(($_GET['x']) ==$sidebar_label[$i])
@@ -73,6 +74,12 @@
               
               <?php  echo'<a href="'. $y .'"><i class="'.$sidebar_icon[$i].'"></i> <span> '. $sidebar_label[$i] .' </span></a></li>'; ?>
               <?php
+          }
+          else
+          {
+            $y="?x=".$sidebar_label[$i];
+           echo'  <li><a href="'. $y .'" style="opacity:0;"><i class="'.$sidebar_icon[$i].'"></i> <span> '. $sidebar_label[$i] .' </span></a></li>';
+          }
    }
    ?>
      
