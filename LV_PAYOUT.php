@@ -368,7 +368,10 @@ Terms and Conditions Here.
 
                       {  
 ?>
-                <td><?php echo $row[0]; ?></td>
+                <td><?php echo $row[0]; 
+                    $total = $row[0];
+
+                ?></td>
 
 <?php 
                       }
@@ -391,7 +394,7 @@ Terms and Conditions Here.
       <div class="row no-print">
         <div class="col-xs-12">
           <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment
+          <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#payout"><i class="fa fa-credit-card" ></i> Proceed Payment
           </button>
           <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF
@@ -405,6 +408,46 @@ Terms and Conditions Here.
 
 </div>
 
+   
+  <div id='payout' class='modal fade'>
+    <div class='modal-dialog'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+          <h4 class='modal-title'>INFORMATION </h4>
+        </div>
+        <div class='modal-body'>
+
+
+          <form  role='form' action='LV_submit.php' method='post' id='partdelpost' enctype='multipart/form-data'>
+
+                   <div class='input-group margin'>
+                  <div class='input-group-btn'>
+                  <button type='button' class='btn btn-block btn-primary btn-flat size-200px'><b>Total Amount</b></button>
+                  </div>
+                  <input type='text' class='form-control'   disabled style='' value='<?php echo $total;?>'>
+                  </div>
+      <br>
+                   <div class='input-group margin'>
+                  <div class='input-group-btn'>
+                  <button type='button' class='btn btn-block btn-primary btn-flat size-200px'><b>Enter Payment Amount</b></button>
+                  </div>
+                  <input type='number' class='form-control'   style='' min='<?php echo (int)$total;?>'  required>
+                  </div>
+
+        </div>
+        
+                <div class='modal-footer'>
+       <button type='submit' name='payout'  class='btn btn-success'>Yes</button>
+                        
+        </form>
+
+
+      </div>
+    </div>
+
+
+  </div>;
 
 
 
